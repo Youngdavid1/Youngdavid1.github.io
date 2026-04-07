@@ -1,11 +1,646 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>hello world</h1>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Young David | Portfolio</title>
+    <meta
+      name="description"
+      content="Young David is a designer-minded frontend builder creating responsive portfolios, landing pages, and polished web experiences with thoughtful motion."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Space+Grotesk:wght@500;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="./styles.css?v=20260407-2" />
+  </head>
+  <body class="antialiased">
+    <div class="ambient ambient--teal" aria-hidden="true"></div>
+    <div class="ambient ambient--gold" aria-hidden="true"></div>
+    <div class="grid-glow" aria-hidden="true"></div>
+
+    <div class="page-shell">
+      <header class="site-header">
+        <a class="brand" href="#top" aria-label="Young David home">
+          <span class="brand__mark">YD</span>
+          <span class="brand__text">
+            <strong>Young David</strong>
+            <small>Portfolio Designer &amp; Frontend Builder</small>
+          </span>
+        </a>
+
+        <nav class="site-nav" aria-label="Primary">
+          <a class="site-nav__link" href="#about">About</a>
+          <a class="site-nav__link" href="#resume">Resume</a>
+          <a class="site-nav__link" href="#work">Work</a>
+          <a class="site-nav__link" href="#skills">Skills</a>
+          <a class="site-nav__link" href="#contact">Contact</a>
+        </nav>
+
+        <a class="button button--ghost" href="mailto:hello@youngdavid1.com"
+          >Let's talk</a
+        >
+      </header>
+
+      <main>
+        <section class="hero section" id="top">
+          <div class="hero__content reveal">
+            <p class="eyebrow">Rebranded Portfolio Direction</p>
+            <h1>
+              Designing portfolio experiences that feel premium, personal, and
+              ready to launch.
+            </h1>
+            <p class="hero__lead">
+              I'm Young David, a designer-minded frontend builder shaping brand
+              stories, responsive interfaces, and motion that supports the
+              message instead of distracting from it.
+            </p>
+
+            <div class="hero__actions">
+              <a class="button button--primary" href="#resume"
+                >See the experience</a
+              >
+              <a
+                class="button button--secondary"
+                href="mailto:hello@youngdavid1.com"
+                >Start a conversation</a
+              >
+            </div>
+
+            <ul class="hero__highlights" aria-label="Strength highlights">
+              <li>Story-led interface direction</li>
+              <li>Responsive HTML, CSS, and JavaScript craft</li>
+              <li>GitHub Pages-ready delivery with cleaner polish</li>
+            </ul>
+          </div>
+
+          <div class="hero__panel reveal reveal--delay">
+            <article class="hero-card hero-card--feature">
+              <p class="hero-card__label">Current focus</p>
+              <h2>
+                Turning simple personal sites into memorable digital
+                introductions.
+              </h2>
+              <p>
+                The goal is not just to make a page look better. It is to make
+                the story clearer, the brand stronger, and the scrolling
+                experience feel considered.
+              </p>
+            </article>
+
+            <div class="hero-grid">
+              <article class="mini-card">
+                <span class="mini-card__index">01</span>
+                <h3>Brand clarity</h3>
+                <p>
+                  Sharper messaging, stronger hierarchy, and a first impression
+                  that feels intentional.
+                </p>
+              </article>
+
+              <article class="mini-card">
+                <span class="mini-card__index">02</span>
+                <h3>Motion with purpose</h3>
+                <p>
+                  Animations guide attention, create rhythm, and add confidence
+                  without noise.
+                </p>
+              </article>
+
+              <article class="mini-card">
+                <span class="mini-card__index">03</span>
+                <h3>Launch-ready build</h3>
+                <p>
+                  Responsive sections, cleaner structure, and practical delivery
+                  for real deployment.
+                </p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="proof reveal" aria-label="Core strengths">
+          <div class="proof__item">
+            <span>Identity-led layouts</span>
+            <p>Pages that feel like a brand, not a template.</p>
+          </div>
+          <div class="proof__item">
+            <span>Frontend polish</span>
+            <p>Better spacing, hierarchy, motion, and responsive behavior.</p>
+          </div>
+          <div class="proof__item">
+            <span>Collaboration mindset</span>
+            <p>
+              Feedback-friendly delivery with clearer thinking behind each
+              section.
+            </p>
+          </div>
+        </section>
+
+        <section class="section" id="about">
+          <div class="section-heading reveal">
+            <p class="eyebrow">About The Work</p>
+            <h2>
+              A portfolio should introduce the person, prove the skill, and feel
+              finished.
+            </h2>
+            <p>
+              This redesign pushes the site away from generic cards and toward a
+              clearer, more editorial identity. The structure now balances
+              aesthetics, functionality, and the reasoning behind the work.
+            </p>
+          </div>
+
+          <div class="intro-grid">
+            <article class="info-card reveal">
+              <p class="info-card__eyebrow">Brand &amp; Rebrand</p>
+              <h3>Visual systems that feel more confident</h3>
+              <p>
+                Stronger typography, a warmer palette, and more deliberate
+                composition help the portfolio feel premium from the first
+                screen.
+              </p>
+            </article>
+
+            <article class="info-card reveal reveal--delay">
+              <p class="info-card__eyebrow">Interface Craft</p>
+              <h3>Cleaner usability without losing style</h3>
+              <p>
+                Layout flow, spacing, and call-to-action placement are designed
+                to keep the experience easy to follow on both desktop and
+                mobile.
+              </p>
+            </article>
+
+            <article class="info-card reveal reveal--delay-2">
+              <p class="info-card__eyebrow">Delivery Mindset</p>
+              <h3>Built to ship, not just to impress</h3>
+              <p>
+                The final structure is lighter, easier to maintain, and more
+                useful for real conversations, portfolio reviews, and future
+                updates.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section resume-section" id="resume">
+          <div class="section-heading reveal">
+            <p class="eyebrow">Resume &amp; Experience</p>
+            <h2>
+              What the resume says, and what the work behind it taught me.
+            </h2>
+            <p>
+              Instead of listing tools alone, this section explains the kind of
+              work I do, what I learn during delivery, how I think through
+              design problems, and the collaboration style I bring into
+              projects.
+            </p>
+          </div>
+
+          <div class="resume-layout">
+            <aside class="resume-summary reveal">
+              <p class="resume-summary__eyebrow">Resume snapshot</p>
+              <h3>
+                Designer-minded frontend work with a strong storytelling lens.
+              </h3>
+
+              <ul class="summary-list">
+                <li>
+                  <strong>Focus:</strong> portfolios, landing pages, showcase
+                  sites, and polished static experiences.
+                </li>
+                <li>
+                  <strong>Strengths:</strong> responsive layouts, motion,
+                  typography, card systems, and content hierarchy.
+                </li>
+                <li>
+                  <strong>Tools:</strong> HTML, CSS, JavaScript, GitHub Pages,
+                  design thinking, and interface refinement.
+                </li>
+                <li>
+                  <strong>Work style:</strong> collaborative, iterative,
+                  detail-focused, and practical about launch quality.
+                </li>
+              </ul>
+
+              <a
+                class="text-link"
+                href="mailto:hello@youngdavid1.com?subject=Resume%20request"
+                >Request resume PDF</a
+              >
+            </aside>
+
+            <div class="timeline">
+              <article class="timeline-item reveal">
+                <div class="timeline-item__header">
+                  <span class="timeline-item__index">01</span>
+                  <div>
+                    <p class="timeline-item__eyebrow">Portfolio direction</p>
+                    <h3>
+                      Rebranding personal sites and landing-page experiences
+                    </h3>
+                  </div>
+                </div>
+
+                <p class="timeline-item__intro">
+                  This kind of work is about making someone's online presence
+                  feel more focused, professional, and easy to trust.
+                </p>
+
+                <div class="timeline-item__details">
+                  <div>
+                    <span>What I learned</span>
+                    <p>
+                      Clear structure creates trust faster than decoration
+                      alone.
+                    </p>
+                  </div>
+                  <div>
+                    <span>Thinking involved</span>
+                    <p>
+                      Start with narrative, then shape typography, spacing, and
+                      motion around it.
+                    </p>
+                  </div>
+                  <div>
+                    <span>Teamwork</span>
+                    <p>
+                      Translate feedback into visible improvements without
+                      losing the original personality.
+                    </p>
+                  </div>
+                </div>
+              </article>
+
+              <article class="timeline-item reveal reveal--delay">
+                <div class="timeline-item__header">
+                  <span class="timeline-item__index">02</span>
+                  <div>
+                    <p class="timeline-item__eyebrow">Responsive systems</p>
+                    <h3>Building layouts that stay strong across devices</h3>
+                  </div>
+                </div>
+
+                <p class="timeline-item__intro">
+                  Responsive work is not only about shrinking columns. It is
+                  about keeping the same level of clarity, confidence, and
+                  rhythm on every screen size.
+                </p>
+
+                <div class="timeline-item__details">
+                  <div>
+                    <span>What I learned</span>
+                    <p>
+                      Small spacing and type decisions have a huge effect on how
+                      premium a site feels.
+                    </p>
+                  </div>
+                  <div>
+                    <span>Thinking involved</span>
+                    <p>
+                      Design mobile-first, protect hierarchy, and remove layout
+                      friction before adding flair.
+                    </p>
+                  </div>
+                  <div>
+                    <span>Teamwork</span>
+                    <p>
+                      Keep discussions grounded in user flow, not just visual
+                      preference.
+                    </p>
+                  </div>
+                </div>
+              </article>
+
+              <article class="timeline-item reveal reveal--delay-2">
+                <div class="timeline-item__header">
+                  <span class="timeline-item__index">03</span>
+                  <div>
+                    <p class="timeline-item__eyebrow">Launch polish</p>
+                    <h3>Finishing details that make a site feel complete</h3>
+                  </div>
+                </div>
+
+                <p class="timeline-item__intro">
+                  The last part of a project matters. Motion, footer design,
+                  visual balance, and contact flow are often the difference
+                  between good and memorable.
+                </p>
+
+                <div class="timeline-item__details">
+                  <div>
+                    <span>What I learned</span>
+                    <p>
+                      Polish is part of the product, not an optional extra at
+                      the end.
+                    </p>
+                  </div>
+                  <div>
+                    <span>Thinking involved</span>
+                    <p>
+                      Check real content, real scrolling, and real mobile
+                      behavior before calling it done.
+                    </p>
+                  </div>
+                  <div>
+                    <span>Teamwork</span>
+                    <p>
+                      Close projects well by communicating decisions clearly and
+                      making future updates easier.
+                    </p>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" id="work">
+          <div class="section-heading reveal">
+            <p class="eyebrow">Selected Focus Areas</p>
+            <h2>
+              Representative work that combines design taste, frontend detail,
+              and product thinking.
+            </h2>
+            <p>
+              These cards describe the kinds of portfolio and interface work I
+              enjoy most: the projects where aesthetics, usability, and message
+              all need to move together.
+            </p>
+          </div>
+
+          <div class="work-grid">
+            <article class="project-card reveal">
+              <p class="project-card__tag">Story-First Portfolios</p>
+              <h3>Homepages that immediately explain value and personality</h3>
+              <p>
+                Build portfolio intros with stronger brand language, better CTA
+                placement, and sections that guide a visitor instead of making
+                them guess.
+              </p>
+              <ul class="project-card__list">
+                <li>Clearer narrative flow from hero to contact</li>
+                <li>Premium card styling without clutter</li>
+                <li>Better first impression for personal brands</li>
+              </ul>
+            </article>
+
+            <article class="project-card reveal reveal--delay">
+              <p class="project-card__tag">Motion &amp; Interaction</p>
+              <h3>Animation that adds rhythm, confidence, and visual focus</h3>
+              <p>
+                Use reveal transitions, hover feedback, and layered background
+                movement to make the page feel alive while still staying easy to
+                read.
+              </p>
+              <ul class="project-card__list">
+                <li>Subtle scroll-based reveals</li>
+                <li>Interactive buttons and card depth</li>
+                <li>Reduced-motion support for accessibility</li>
+              </ul>
+            </article>
+
+            <article class="project-card reveal reveal--delay-2">
+              <p class="project-card__tag">Static Launch Delivery</p>
+              <h3>Simple technology, stronger execution, faster publishing</h3>
+              <p>
+                Create maintainable static builds that still feel modern,
+                expressive, and ready for GitHub Pages or lightweight hosting.
+              </p>
+              <ul class="project-card__list">
+                <li>Custom CSS visual system</li>
+                <li>Semantic HTML with easier maintenance</li>
+                <li>Fast-to-edit structure for future updates</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+
+        <section class="section skills-section" id="skills">
+          <div class="section-heading reveal">
+            <p class="eyebrow">Skills &amp; Strengths</p>
+            <h2>
+              The blend of design, code, and collaboration that shapes the final
+              result.
+            </h2>
+            <p>
+              The strongest portfolio work usually sits between creativity and
+              structure. These are the areas that support that balance.
+            </p>
+          </div>
+
+          <div class="skills-grid">
+            <article class="skill-group reveal">
+              <h3>Design Direction</h3>
+              <div class="skill-pills">
+                <span>Visual hierarchy</span>
+                <span>Brand storytelling</span>
+                <span>Page composition</span>
+                <span>Typography systems</span>
+                <span>Content flow</span>
+              </div>
+            </article>
+
+            <article class="skill-group reveal reveal--delay">
+              <h3>Frontend Craft</h3>
+              <div class="skill-pills">
+                <span>HTML</span>
+                <span>CSS</span>
+                <span>JavaScript</span>
+                <span>Responsive design</span>
+                <span>Motion design</span>
+              </div>
+            </article>
+
+            <article class="skill-group reveal reveal--delay-2">
+              <h3>Delivery Style</h3>
+              <div class="skill-pills">
+                <span>GitHub Pages</span>
+                <span>Iterative feedback</span>
+                <span>Team collaboration</span>
+                <span>Polish &amp; QA</span>
+                <span>Launch readiness</span>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="section process-section">
+          <div class="section-heading reveal">
+            <p class="eyebrow">How I Work</p>
+            <h2>
+              A simple process that keeps the site beautiful, useful, and easy
+              to trust.
+            </h2>
+          </div>
+
+          <div class="process-grid">
+            <article class="process-card reveal">
+              <span>01</span>
+              <h3>Discover</h3>
+              <p>
+                Start with the story, the audience, and the result the page
+                needs to create.
+              </p>
+            </article>
+
+            <article class="process-card reveal reveal--delay">
+              <span>02</span>
+              <h3>Structure</h3>
+              <p>
+                Build hierarchy, section order, and content flow before chasing
+                visual effects.
+              </p>
+            </article>
+
+            <article class="process-card reveal reveal--delay-2">
+              <span>03</span>
+              <h3>Design &amp; Build</h3>
+              <p>
+                Shape the visual language and frontend behavior together so they
+                support each other.
+              </p>
+            </article>
+
+            <article class="process-card reveal">
+              <span>04</span>
+              <h3>Refine</h3>
+              <p>
+                Test the experience, tighten the details, and finish with
+                confidence instead of rushing.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section class="contact-strip reveal" aria-label="Contact prompt">
+          <div>
+            <p class="eyebrow">Ready To Build</p>
+            <h2>
+              If the site should feel clearer, stronger, and more memorable,
+              let's make it happen.
+            </h2>
+          </div>
+          <a class="button button--primary" href="mailto:hello@youngdavid1.com"
+            >Start the conversation</a
+          >
+        </section>
+      </main>
+
+      <footer class="site-footer" id="contact">
+        <div class="footer-intro reveal">
+          <p class="eyebrow">Contact</p>
+          <h2>Let's make your portfolio feel like your best introduction.</h2>
+          <p>
+            Available for personal portfolio redesigns, landing pages, frontend
+            polish, and thoughtful static experiences that need more than a
+            generic template.
+          </p>
+        </div>
+
+        <div class="footer-grid">
+          <article class="footer-card reveal">
+            <p class="footer-card__title">Email</p>
+            <a href="mailto:hello@youngdavid1.com">hello@youngdavid1.com</a>
+            <p>Best for project ideas, collaboration, and resume requests.</p>
+          </article>
+
+          <article class="footer-card reveal reveal--delay">
+            <p class="footer-card__title">GitHub</p>
+            <a
+              href="https://github.com/Youngdavid1"
+              target="_blank"
+              rel="noreferrer"
+              >github.com/Youngdavid1</a
+            >
+            <p>
+              See the work, the direction, and the systems behind the pages.
+            </p>
+          </article>
+
+          <article class="footer-card reveal reveal--delay-2">
+            <p class="footer-card__title">Working Style</p>
+            <p>
+              Remote-friendly, feedback-aware, detail-focused, and built around
+              teamwork.
+            </p>
+            <p>
+              I like design decisions that look good and make future edits
+              easier.
+            </p>
+          </article>
+        </div>
+
+        <div class="footer-bottom">
+          <p>
+            &copy; <span id="year"></span> Young David. Built with care,
+            clarity, and motion.
+          </p>
+          <p>
+            Portfolio design, frontend craft, and collaboration-first delivery.
+          </p>
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      const revealElements = document.querySelectorAll(".reveal");
+      const navLinks = document.querySelectorAll(".site-nav__link");
+      const sections = document.querySelectorAll("section[id], footer[id]");
+      const yearElement = document.getElementById("year");
+
+      if (yearElement) {
+        yearElement.textContent = new Date().getFullYear();
+      }
+
+      if ("IntersectionObserver" in window) {
+        const revealObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+                revealObserver.unobserve(entry.target);
+              }
+            });
+          },
+          {
+            threshold: 0.18,
+            rootMargin: "0px 0px -10% 0px",
+          },
+        );
+
+        revealElements.forEach((element) => revealObserver.observe(element));
+
+        const navObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting) {
+                return;
+              }
+
+              navLinks.forEach((link) => {
+                const isActive =
+                  link.getAttribute("href") === "#" + entry.target.id;
+                link.classList.toggle("is-active", isActive);
+              });
+            });
+          },
+          {
+            threshold: 0.3,
+            rootMargin: "-35% 0px -45% 0px",
+          },
+        );
+
+        sections.forEach((section) => navObserver.observe(section));
+      } else {
+        revealElements.forEach((element) =>
+          element.classList.add("is-visible"),
+        );
+      }
+    </script>
+  </body>
 </html>
