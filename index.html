@@ -14,10 +14,50 @@
       href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Space+Grotesk:wght@500;700&amp;display=swap"
       rel="stylesheet"
     />
+    <script>
+      (() => {
+        try {
+          const storedTheme = localStorage.getItem("portfolio-theme");
+          const prefersLight =
+            window.matchMedia &&
+            window.matchMedia("(prefers-color-scheme: light)").matches;
+          document.documentElement.dataset.theme =
+            storedTheme || (prefersLight ? "light" : "dark");
+        } catch (error) {
+          document.documentElement.dataset.theme = "dark";
+        }
+      })();
+    </script>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="./styles.css?v=20260407-2" />
+    <link rel="stylesheet" href="./styles.css?v=20260407-4" />
   </head>
   <body class="antialiased">
+    <div class="intro-screen" id="intro-screen" aria-live="polite">
+      <div class="intro-screen__panel">
+        <p class="intro-screen__eyebrow">Hello there</p>
+        <h2 class="intro-screen__title">Welcome to Young David's portfolio.</h2>
+        <p class="intro-screen__text">
+          Story, motion, and frontend craft are about to meet in one place.
+          Stay for a second, then step inside.
+        </p>
+        <div class="intro-screen__pulse" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <button
+          class="button button--primary intro-screen__button"
+          id="intro-enter"
+          type="button"
+        >
+          Enter portfolio
+        </button>
+      </div>
+    </div>
+
+    <div class="scroll-progress" aria-hidden="true">
+      <span class="scroll-progress__bar" id="scroll-progress-bar"></span>
+    </div>
     <div class="ambient ambient--teal" aria-hidden="true"></div>
     <div class="ambient ambient--gold" aria-hidden="true"></div>
     <div class="grid-glow" aria-hidden="true"></div>
@@ -40,9 +80,26 @@
           <a class="site-nav__link" href="#contact">Contact</a>
         </nav>
 
-        <a class="button button--ghost" href="mailto:hello@youngdavid1.com"
-          >Let's talk</a
-        >
+        <div class="header-actions">
+          <button
+            class="theme-toggle"
+            id="theme-toggle"
+            type="button"
+            aria-label="Switch color theme"
+            aria-pressed="false"
+          >
+            <span class="theme-toggle__track" aria-hidden="true">
+              <span class="theme-toggle__icon theme-toggle__icon--sun">☼</span>
+              <span class="theme-toggle__icon theme-toggle__icon--moon">◐</span>
+              <span class="theme-toggle__thumb"></span>
+            </span>
+            <span class="theme-toggle__label" id="theme-toggle-label">Dark</span>
+          </button>
+
+          <a class="button button--ghost" href="mailto:hello@youngdavid1.com"
+            >Let's talk</a
+          >
+        </div>
       </header>
 
       <main>
@@ -137,6 +194,71 @@
               Feedback-friendly delivery with clearer thinking behind each
               section.
             </p>
+          </div>
+        </section>
+
+        <section class="section guess-section" aria-label="Guess who I am game">
+          <div class="guess-card reveal" id="guess-card">
+            <div class="guess-copy">
+              <p class="eyebrow">Mini Game</p>
+              <h2>Guess who I am before the rest of the page tells you.</h2>
+              <p>
+                One identity, a few clues, and a little bit of intuition. If
+                you get it right early, you already understand the kind of work
+                I care about most.
+              </p>
+            </div>
+
+            <div class="guess-board">
+              <div class="guess-clue">
+                <span class="guess-clue__count" id="guess-clue-count"
+                  >Clue 1 of 3</span
+                >
+                <p class="guess-clue__text" id="guess-clue-text">
+                  I turn personal stories into digital experiences people can
+                  feel.
+                </p>
+              </div>
+
+              <button
+                class="button button--secondary guess-next"
+                id="guess-next-clue"
+                type="button"
+              >
+                Next clue
+              </button>
+
+              <div class="guess-options" id="guess-options">
+                <button
+                  class="guess-option"
+                  type="button"
+                  data-correct="true"
+                  aria-pressed="false"
+                >
+                  A designer-minded frontend builder
+                </button>
+                <button
+                  class="guess-option"
+                  type="button"
+                  data-correct="false"
+                  aria-pressed="false"
+                >
+                  A data engineer focused on pipelines
+                </button>
+                <button
+                  class="guess-option"
+                  type="button"
+                  data-correct="false"
+                  aria-pressed="false"
+                >
+                  A logo-only brand designer
+                </button>
+              </div>
+
+              <p class="guess-feedback" id="guess-feedback">
+                Take your best guess.
+              </p>
+            </div>
           </div>
         </section>
 
@@ -575,6 +697,15 @@
           </article>
         </div>
 
+        <div class="footer-finish reveal">
+          <p class="footer-finish__eyebrow">You've reached the end</p>
+          <h3>The scroll may be finished, but the conversation can start here.</h3>
+          <p>
+            If the story, motion, and thinking felt like a fit, let's build the
+            next version together.
+          </p>
+        </div>
+
         <div class="footer-bottom">
           <p>
             &copy; <span id="year"></span> Young David. Built with care,
@@ -587,14 +718,218 @@
       </footer>
     </div>
 
+    <button class="back-to-top" id="back-to-top" type="button" aria-label="Back to top">
+      ↑
+    </button>
+
     <script>
+      const rootElement = document.documentElement;
+      const introScreen = document.getElementById("intro-screen");
+      const introEnterButton = document.getElementById("intro-enter");
+      const themeToggle = document.getElementById("theme-toggle");
+      const themeToggleLabel = document.getElementById("theme-toggle-label");
       const revealElements = document.querySelectorAll(".reveal");
       const navLinks = document.querySelectorAll(".site-nav__link");
       const sections = document.querySelectorAll("section[id], footer[id]");
       const yearElement = document.getElementById("year");
+      const progressBar = document.getElementById("scroll-progress-bar");
+      const backToTopButton = document.getElementById("back-to-top");
+      const reduceMotionQuery = window.matchMedia(
+        "(prefers-reduced-motion: reduce)",
+      );
+      const themeMediaQuery = window.matchMedia(
+        "(prefers-color-scheme: light)",
+      );
+      const themeStorageKey = "portfolio-theme";
+      const guessCard = document.getElementById("guess-card");
+      const guessClueCount = document.getElementById("guess-clue-count");
+      const guessClueText = document.getElementById("guess-clue-text");
+      const guessNextClueButton = document.getElementById("guess-next-clue");
+      const guessFeedback = document.getElementById("guess-feedback");
+      const guessOptions = document.querySelectorAll(".guess-option");
+      const interactiveCards = document.querySelectorAll(
+        ".hero-card, .mini-card, .guess-card, .info-card, .resume-summary, .timeline-item, .project-card, .skill-group, .process-card, .footer-card",
+      );
+      const clueDeck = [
+        "I turn personal stories into digital experiences people can feel.",
+        "I care about layout rhythm, motion, and making portfolios memorable.",
+        "The answer lives where design thinking and frontend craft meet.",
+      ];
+      let clueIndex = 0;
 
       if (yearElement) {
         yearElement.textContent = new Date().getFullYear();
+      }
+
+      const applyTheme = (theme) => {
+        rootElement.dataset.theme = theme;
+
+        if (themeToggle) {
+          const isLight = theme === "light";
+          themeToggle.setAttribute("aria-pressed", String(isLight));
+          themeToggle.setAttribute(
+            "aria-label",
+            isLight ? "Switch to dark mode" : "Switch to light mode",
+          );
+        }
+
+        if (themeToggleLabel) {
+          themeToggleLabel.textContent =
+            theme === "light" ? "Light" : "Dark";
+        }
+      };
+
+      const updateScrollUi = () => {
+        const scrollTop = window.scrollY || document.documentElement.scrollTop;
+        const scrollHeight =
+          document.documentElement.scrollHeight - window.innerHeight;
+        const progress =
+          scrollHeight > 0 ? Math.min((scrollTop / scrollHeight) * 100, 100) : 0;
+
+        if (progressBar) {
+          progressBar.style.width = `${progress}%`;
+        }
+
+        document.body.classList.toggle("is-scrolled", scrollTop > 24);
+
+        if (backToTopButton) {
+          backToTopButton.classList.toggle("is-visible", scrollTop > 620);
+        }
+      };
+
+      applyTheme(rootElement.dataset.theme || "dark");
+      updateScrollUi();
+
+      const updateClue = () => {
+        if (guessClueCount) {
+          guessClueCount.textContent = `Clue ${clueIndex + 1} of ${clueDeck.length}`;
+        }
+
+        if (guessClueText) {
+          guessClueText.textContent = clueDeck[clueIndex];
+        }
+      };
+
+      const hideIntroScreen = () => {
+        if (!introScreen || introScreen.classList.contains("is-hidden")) {
+          return;
+        }
+
+        introScreen.classList.add("is-hidden");
+        document.body.classList.remove("intro-active");
+
+        window.setTimeout(() => {
+          introScreen.setAttribute("hidden", "");
+        }, reduceMotionQuery.matches ? 20 : 500);
+      };
+
+      if (introScreen) {
+        document.body.classList.add("intro-active");
+        updateClue();
+
+        window.setTimeout(
+          hideIntroScreen,
+          reduceMotionQuery.matches ? 600 : 2400,
+        );
+
+        introEnterButton?.addEventListener("click", hideIntroScreen);
+
+        introScreen.addEventListener("click", (event) => {
+          if (event.target === introScreen) {
+            hideIntroScreen();
+          }
+        });
+
+        window.addEventListener("keydown", (event) => {
+          if (event.key === "Escape") {
+            hideIntroScreen();
+          }
+        });
+      } else {
+        updateClue();
+      }
+
+      if (themeToggle) {
+        themeToggle.addEventListener("click", () => {
+          const nextTheme =
+            rootElement.dataset.theme === "light" ? "dark" : "light";
+
+          try {
+            localStorage.setItem(themeStorageKey, nextTheme);
+          } catch (error) {
+            // Ignore storage failures and still apply the theme.
+          }
+
+          applyTheme(nextTheme);
+        });
+      }
+
+      const syncSystemTheme = (event) => {
+        try {
+          if (localStorage.getItem(themeStorageKey)) {
+            return;
+          }
+        } catch (error) {
+          // If storage is unavailable, fall back to system theme updates.
+        }
+
+        applyTheme(event.matches ? "light" : "dark");
+      };
+
+      if (typeof themeMediaQuery.addEventListener === "function") {
+        themeMediaQuery.addEventListener("change", syncSystemTheme);
+      } else if (typeof themeMediaQuery.addListener === "function") {
+        themeMediaQuery.addListener(syncSystemTheme);
+      }
+
+      window.addEventListener("scroll", updateScrollUi, { passive: true });
+
+      if (backToTopButton) {
+        backToTopButton.addEventListener("click", () => {
+          window.scrollTo({
+            top: 0,
+            behavior: reduceMotionQuery.matches ? "auto" : "smooth",
+          });
+        });
+      }
+
+      if (guessNextClueButton) {
+        guessNextClueButton.addEventListener("click", () => {
+          clueIndex = (clueIndex + 1) % clueDeck.length;
+          updateClue();
+        });
+      }
+
+      if (guessOptions.length) {
+        guessOptions.forEach((option) => {
+          option.addEventListener("click", () => {
+            const isCorrect = option.dataset.correct === "true";
+
+            guessOptions.forEach((item) => {
+              item.classList.remove("is-correct", "is-wrong");
+              item.setAttribute("aria-pressed", "false");
+            });
+
+            option.setAttribute("aria-pressed", "true");
+            option.classList.add(isCorrect ? "is-correct" : "is-wrong");
+
+            if (guessFeedback) {
+              guessFeedback.classList.toggle("is-success", isCorrect);
+              guessFeedback.textContent = isCorrect
+                ? "Correct. I'm Young David: a designer-minded frontend builder who loves story, motion, and polish."
+                : "Close, but think portfolios, storytelling, motion, and frontend craft.";
+            }
+
+            if (guessCard) {
+              guessCard.classList.toggle("is-solved", isCorrect);
+            }
+
+            if (!isCorrect) {
+              clueIndex = Math.min(clueIndex + 1, clueDeck.length - 1);
+              updateClue();
+            }
+          });
+        });
       }
 
       if ("IntersectionObserver" in window) {
@@ -640,6 +975,32 @@
         revealElements.forEach((element) =>
           element.classList.add("is-visible"),
         );
+      }
+
+      if (
+        !reduceMotionQuery.matches &&
+        window.matchMedia("(hover: hover) and (pointer: fine)").matches
+      ) {
+        interactiveCards.forEach((card) => {
+          const resetCard = () => {
+            card.style.removeProperty("--card-rotate-x");
+            card.style.removeProperty("--card-rotate-y");
+          };
+
+          card.addEventListener("pointermove", (event) => {
+            const bounds = card.getBoundingClientRect();
+            const x = (event.clientX - bounds.left) / bounds.width;
+            const y = (event.clientY - bounds.top) / bounds.height;
+            const rotateY = (x - 0.5) * 10;
+            const rotateX = (0.5 - y) * 10;
+
+            card.style.setProperty("--card-rotate-x", `${rotateX}deg`);
+            card.style.setProperty("--card-rotate-y", `${rotateY}deg`);
+          });
+
+          card.addEventListener("pointerleave", resetCard);
+          card.addEventListener("pointerup", resetCard);
+        });
       }
     </script>
   </body>
